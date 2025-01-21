@@ -23,8 +23,8 @@ export class TodoComponent {
       this.todos = JSON.parse(window.localStorage.getItem("todos")!);
     else{
       this.todos = [
-        { id: 1, task: 'Learn Angular', complete: true },
-        { id: 2, task: 'Build a ToDo App', complete: false },
+        { id: 1, task: 'Edit website', complete: true },
+        { id: 2, task: 'Finalise website logic', complete: false },
       ];
     }
   }
