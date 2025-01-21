@@ -1,0 +1,68 @@
+<div *ngIf="editingTodoId !== todo.id">
+  <div class="input-group mb-3">
+    <label
+      (click)="toggleComplete(todo.id)"
+      class="input-group-text"
+      [class.complete]="todo.complete"
+      >{{ todo.complete ? "Completed" : "Incomplete" }}</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      aria-describedby="button-addon2"
+      value="{{ todo.task }}"
+      readonly
+      disabled
+    />
+    <button
+      (click)="editTodo(todo.id)"
+      class="btn btn-secondary"
+      type="button"
+      id="button-addon2"
+    >
+      Edit
+    </button>
+    <button
+      (click)="deleteTodo(todo.id)"
+      class="btn btn-danger"
+      type="button"
+      id="button-addon2"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+
+<div *ngIf="editingTodoId === todo.id">
+  <div class="input-group mb-3">
+    <label
+      (click)="toggleComplete(todo.id)"
+      class="input-group-text"
+      [class.complete]="todo.complete"
+      >{{ todo.complete ? "Completed" : "Incomplete" }}</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      aria-describedby="button-addon2"
+      value="{{ todo.task }}"
+      [(ngModel)]="editingTask"
+    />
+    <button
+      (click)="cancelEdit()"
+      class="btn btn-secondary"
+      type="button"
+      id="button-addon2"
+    >
+      Cancel
+    </button>
+    <button
+      (click)="saveTodo()"
+      class="btn btn-primary"
+      type="button"
+      id="button-addon2"
+    >
+      Save
+    </button>
+  </div>
+</div>

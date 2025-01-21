@@ -1,1 +1,31 @@
-<p>to-do works!</p>
+<div class="todo-container">
+  <div class="input-group mb-3">
+    <label class="input-group-text">Task</label>
+    <input
+      [(ngModel)]="newTask"
+      type="text"
+      class="form-control"
+      aria-describedby="button-addon2"
+    />
+    <button
+      (click)="addTodo()"
+      class="btn btn-primary"
+      type="button"
+      id="button-addon2"
+    >
+      Add
+    </button>
+  </div>
+
+  <!-- Todo List -->
+  <ul>
+    <app-to-do-task
+      *ngFor="let todo of todos; trackBy: trackById"
+      [todo]="todo"
+      [todos]="todos"
+      [editingTask]="editingTask"
+      [editingTodoId]="editingTodoId"
+      (newTodos)="updateTodos($event)"
+    ></app-to-do-task>
+  </ul>
+</div>
