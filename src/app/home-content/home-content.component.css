@@ -1,0 +1,24 @@
+.hero{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 3rem;
+}
+
+.cardContainer{
+  max-width: 350px;
+  height: 100%;
+}
+
+.card{
+  min-height: 150px;
+}
+
+.badge{
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
