@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ToDoTaskComponent } from "../to-do-task/to-do-task.component";
 import { FormsModule } from '@angular/forms';
+import { ToDoServiceService } from '../to-do-service.service';
 
 export interface Todo {
   id: number;
@@ -18,15 +19,8 @@ export interface Todo {
 export class TodoComponent {
   todos: Todo[];
 
-  constructor(){
-    if(window.localStorage.getItem("todos"))
-      this.todos = JSON.parse(window.localStorage.getItem("todos")!);
-    else{
-      this.todos = [
-        { id: 1, task: 'Edit website', complete: true },
-        { id: 2, task: 'Finalise website logic', complete: false },
-      ];
-    }
+  constructor(private ToDoServiceService: ToDoServiceService){
+    this.todos = ToDoServiceService.getTodos();
   }
 
   newTask: string = '';
@@ -36,7 +30,7 @@ export class TodoComponent {
   trackById = (index: number, todo: Todo) => todo.id;
 
   saveTodos(){
-    window.localStorage.setItem("todos", JSON.stringify(this.todos));
+    this.ToDoServiceService.saveTodos(this.todos);
   }
 
   addTodo() {
